@@ -1,0 +1,57 @@
+CHAPITRE PREMIER : REVUE DE LA LITTERATURE
+
+1.1. Introduction partielle
+La revue de la litterature constitue une etape essentielle dans toute recherche scientifique. Elle permet de comprendre l'etat actuel des connaissances, d'identifier les approches deja proposees, de reperer leurs limites et de positionner clairement la contribution du present travail. Dans le cadre de ce memoire, elle sert a fonder la conception d'un systeme de surveillance video intelligent capable d'analyser des flux en temps reel, de detecter des situations critiques et d'assister un superviseur dans la prise de decision.
+
+1.2. Revue empirique
+De nombreux travaux ont explore l'analyse video par intelligence artificielle pour la securite. Nous retenons ici quelques orientations recurrentes :
+
+1. Les approches de detection d'objets en temps reel (familles YOLO, SSD, Faster R-CNN) montrent de bonnes performances de rapidite et precision, mais restent sensibles aux conditions d'eclairage, aux occlusions et a la qualite des cameras.
+
+2. Les travaux sur la reconnaissance d'actions violentes dans les scenes videos utilisent des modeles spatio-temporels (CNN 3D, LSTM, Transformers video). Ils ameliorent la detection de comportements, mais exigent souvent beaucoup de ressources materielle et des jeux de donnees bien annotes.
+
+3. Les systemes deployes en contexte reel privilegient des architectures legeres pour maintenir la fluidite sur machine standard. Le principal compromis observe est entre precision elevee et latence faible.
+
+4. Plusieurs solutions existantes se concentrent sur la detection sans offrir une couche metier complete (gestion des alertes, priorisation, archivage structure des preuves, interface superviseur claire).
+
+Positionnement de notre travail
+Notre projet se demarque par une approche integree orientee poste de commandement :
+- surveillance en direct (webcam/RTSP/video test) ;
+- visualisation annotee en continu ;
+- mecanisme de priorisation des alertes ;
+- organisation automatique des preuves par niveau et similarite ;
+- interface superviseur simplifiee en zones de travail claires.
+
+1.3. Revue theorique et cadre conceptuel
+
+1.3.1. Concepts informatiques generaux
+- Information : element interpretable servant a decrire un evenement observe.
+- Donnee : representation numerique d'une information exploitable par un programme.
+- Systeme : ensemble de composants interconnectes poursuivant un objectif commun.
+- Systeme d'information : organisation de ressources pour collecter, traiter, stocker et diffuser l'information.
+- Base de donnees : stockage structure des donnees (utilisateurs, alertes, preuves, statuts).
+- SGBD : logiciel de gestion de la base de donnees (dans notre cas, SQLite).
+- Application : logiciel permettant l'execution de taches metier.
+- Application web : application accessible via navigateur.
+- Algorithme : suite finie d'instructions permettant de resoudre un probleme.
+- Intelligence artificielle : domaine visant a simuler des capacites cognitives par machine.
+- Machine learning : apprentissage automatique a partir de donnees.
+- Deep learning : apprentissage par reseaux de neurones profonds.
+- Vision par ordinateur : analyse automatique d'images et de videos.
+- Detection d'objets : localisation et classification d'objets dans une image.
+- Temps reel : capacite de repondre dans un delai compatible avec l'usage operationnel.
+
+1.3.2. Concepts du domaine securite et surveillance
+- Videosurveillance : observation d'espaces via flux cameras.
+- Incident : evenement anormal ou dangereux necessitant attention.
+- Alerte : notification generee lorsqu'un risque est detecte.
+- Niveau d'alerte : classification de la gravite (modere, eleve, critique, urgence).
+- Supervision : activite de controle et d'aide a la decision en centre de surveillance.
+- Preuve numerique : image ou sequence video conservee pour verification ulterieure.
+- Robustesse : capacite du systeme a rester fonctionnel malgre bruit, variation de lumiere ou mouvement.
+- Latence : delai entre acquisition de la frame et affichage du resultat.
+- Precision operationnelle : adequation entre detections produites et realite observee.
+
+1.4. Conclusion partielle
+Cette revue de la litterature montre que les briques technologiques de l'analyse video intelligente existent et sont matures, mais que leur integration en un outil operable par un superviseur reste un veritable enjeu. Notre contribution se situe precisement a ce niveau : transformer des modeles de detection en une solution coherente de surveillance en temps reel, avec alertes exploitables et archivage structure des preuves. Ce cadre theorique et empirique servira de base au chapitre suivant consacre a la methodologie et aux choix techniques.
+

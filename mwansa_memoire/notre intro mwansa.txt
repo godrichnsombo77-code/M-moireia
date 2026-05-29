@@ -1,0 +1,95 @@
+INTRODUCTION GENERALE
+
+La securite des personnes et des biens est aujourd'hui une priorite strategique pour les institutions publiques, les entreprises, les sites industriels et les espaces urbains. Bien que la videosurveillance soit largement deployee, son mode de fonctionnement reste majoritairement passif: les cameras enregistrent, mais l'interpretation des flux depend encore d'une vigilance humaine continue. Or, un operateur ne peut maintenir durablement une attention optimale sur plusieurs ecrans simultanes. Cette limite operationnelle entraine des retards de reaction, parfois critiques, dans la gestion d'un incident.
+
+Les progres recents en intelligence artificielle (IA), en vision par ordinateur et en apprentissage profond rendent possible une evolution vers la surveillance proactive. Des modeles de detection en temps reel permettent d'identifier automatiquement des objets ou comportements a risque et de declencher des alertes exploitables (Redmon et al., 2016; Bochkovskiy et al., 2020; Jocher et al., 2023). Dans la meme dynamique, les travaux sur la video understanding montrent la capacite de l'IA a analyser des scenes complexes dans des delais compatibles avec l'usage terrain (Carreira & Zisserman, 2017; Feichtenhofer et al., 2019).
+
+Notre recherche s'inscrit dans cette transition technologique. Elle vise la conception d'un systeme intelligent de surveillance video capable d'analyser des flux en direct, de detecter la violence et la presence d'arme, de prioriser les alertes et d'organiser automatiquement les preuves numeriques pour la prise de decision.
+
+1.1. Choix et interet du sujet
+
+1.1.1. Choix du sujet
+Le choix de ce sujet repose sur un constat pratique: disposer de cameras ne suffit pas a prevenir efficacement les incidents si l'analyse reste tardive. Dans plusieurs situations reelles, l'information utile existe deja dans l'image, mais elle n'est pas exploitee au bon moment. Nous avons donc choisi de travailler sur une architecture orientee action immediate, dans laquelle le systeme assiste le superviseur plutot que de produire uniquement des enregistrements.
+
+1.1.2. Interet du sujet
+L'interet du sujet est multiple:
+- Interet securitaire: reduction du delai entre observation et intervention.
+- Interet technologique: integration de la detection temps reel, de la logique d'alerte et de l'archivage intelligent.
+- Interet applicatif: mise en place d'un prototype concret de poste de supervision.
+
+1.1.2.1. Interet personnel
+Tout au long de notre parcours universitaire en intelligence artificielle, nous avons ete formes a transformer des problemes reels en solutions algorithmiques deployables. Ce projet s'inscrit directement dans cette logique. Sur le plan technique, nous avons entraine un modele de detection de type YOLO a partir d'un jeu de donnees de scenes criminelles prepare sur Roboflow. Le modele entraine a d'abord ete obtenu au format .pt, puis converti au format OpenVINO pour optimiser l'inference en environnement local CPU, sans modifier la nature du modele. Cette demarche nous a permis de relier la theorie (entrainement, evaluation, export) a la pratique de l'industrialisation d'un pipeline IA.
+
+1.1.2.2. Interet social
+Le projet contribue a renforcer la securite des usagers dans les espaces surveilles en favorisant l'alerte precoce. Par exemple, lorsqu'un individu tente une intrusion en escaladant un mur tout en portant une arme, le systeme peut declencher l'alerte des les premiers instants (detection de l'arme ou du comportement d'escalade), avant meme la fin du franchissement. Les acteurs de securite reçoivent ainsi l'information au moment utile, ce qui augmente les chances de prevention et de protection des victimes potentielles.
+
+1.1.2.3. Interet du domaine
+Dans le domaine de l'IA appliquee a la surveillance, la contribution ne se limite pas au choix d'un modele de detection. Elle porte aussi sur l'integration metier complete: flux temps reel, visualisation annotee, priorisation des incidents, historique des alertes et classement des preuves par similarite. Cette dimension systeme constitue une valeur ajoutee pour l'operationnel.
+
+1.1.2.4. Interet scientifique
+Le travail documente les compromis centraux entre precision, latence, robustesse et ergonomie. Il propose egalement une base methodologique reproductible pour des evolutions futures: multicameras, suivi d'objets, fusion de modeles, ou extension des classes detectees.
+
+1.2. Contexte de la recherche
+La presente etude se developpe dans un contexte de croissance des risques en milieu urbain et de democratisation des capteurs video. En parallele, les frameworks IA et les outils d'annotation de donnees (comme Roboflow) ont rendu plus accessible la construction de modeles specialises. Toutefois, le passage du modele de laboratoire au systeme de supervision reste un verrou frequent. Notre projet traite precisement ce point: transformer un modele entraine en un dispositif coherent d'aide a la decision en temps reel.
+
+1.3. Problematique
+Malgre la disponibilite des technologies de detection, plusieurs difficultes persistent dans les environnements de surveillance:
+- surcharge cognitive des operateurs;
+- alerte tardive en cas d'incident rapide;
+- absence de priorisation claire des evenements;
+- archivage peu structure des preuves.
+
+La problematique centrale se formule ainsi:
+Comment concevoir un systeme intelligent de surveillance video capable de detecter en temps reel des menaces critiques, de declencher des alertes precoces et pertinentes, et de fournir un support decisionnel clair au superviseur?
+
+1.4. Question de recherche
+De quelle maniere l'integration d'un modele YOLO optimise (conversion OpenVINO), d'une logique de priorisation des alertes et d'une interface de supervision ergonomique peut-elle ameliorer la reactivite et l'efficacite d'un dispositif de surveillance en temps reel?
+
+1.5. Objectifs de la recherche
+
+Objectif general
+Developper un systeme intelligent de surveillance video en temps reel pour la detection d'incidents critiques et l'aide a la decision.
+
+Objectifs specifiques
+- Concevoir un module de capture/analyse de flux (webcam, RTSP, video test).
+- Entrainer et deployer un modele YOLO sur des donnees de type crime issues de Roboflow.
+- Convertir le modele entraine (.pt) vers OpenVINO pour l'inference optimisee.
+- Definir un mecanisme de niveaux d'alerte (modere, eleve, critique, urgence).
+- Mettre en place une interface superviseur claire (direct, journal, preuves).
+- Structurer l'archivage des preuves (images/videos) par niveau et similarite.
+- Evaluer le prototype selon la latence, la stabilite, la coherence des alertes et la lisibilite de l'interface.
+
+1.6. Methodes et techniques
+
+1.6.1. Methodes
+La recherche adopte une approche recherche-developpement (R&D), iterative et experimentale:
+analyse du besoin, modelisation, implementation, tests, ajustements.
+Cette approche est adaptee aux projets IA embarquant a la fois algorithmes, infrastructure logicielle et ergonomie de supervision.
+
+1.6.2. Techniques
+- Technique documentaire: analyse des publications sur la detection temps reel et la surveillance intelligente.
+- Technique experimentale: entrainement, validation et optimisation du modele.
+- Technique de prototypage: construction progressive de l'interface et des modules fonctionnels.
+- Technique d'observation: evaluation des usages pour reduire la complexite operationnelle.
+
+1.7. Delimitation du sujet
+
+Dans le temps
+Le memoire couvre la conception et la realisation d'un prototype fonctionnel dans le cadre universitaire.
+
+Dans l'espace
+Le travail est realise sur un environnement de test controle, avec un ensemble de classes ciblees (violence, arme, personne) et des sources video locales/RTSP.
+
+1.8. Subdivision du travail
+Outre l'introduction generale et la conclusion generale, le memoire est organise en quatre chapitres:
+- Chapitre 1: revue de la litterature et cadre conceptuel.
+- Chapitre 2: methodologie, outils et materiels.
+- Chapitre 3: conception et modelisation du systeme de surveillance.
+- Chapitre 4: implementation, resultats, evaluation et discussion.
+
+References indicatives
+- Bochkovskiy, A., Wang, C.-Y., & Liao, H.-Y. M. (2020). YOLOv4: Optimal Speed and Accuracy of Object Detection.
+- Carreira, J., & Zisserman, A. (2017). Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset.
+- Feichtenhofer, C., Fan, H., Malik, J., & He, K. (2019). SlowFast Networks for Video Recognition.
+- Jocher, G., et al. (2023). Ultralytics YOLO (documentation et implementation).
+- Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). You Only Look Once: Unified, Real-Time Object Detection.
