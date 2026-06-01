@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  /* Background colors */
+  --background: 0 0% 4%;
+  --background-secondary: 0 0% 7%;
+  --background-tertiary: 0 0% 10%;
+  
+  /* Foreground colors */
+  --foreground: 0 0% 95%;
+  --foreground-muted: 0 0% 60%;
+  
+  /* Brand colors */
+  --primary: 142 76% 45%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* Alert colors */
+  --success: 142 76% 45%;
+  --warning: 45 100% 51%;
+  --danger: 0 84% 60%;
+  --critical: 0 100% 50%;
+  
+  /* Border & surfaces */
+  --border: 0 0% 15%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 95%;
+  
+  /* Radius */
+  --radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: hsl(var(--background));
+}
+
+body {
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: 1.5;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground-muted));
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-live {
+  animation: pulse-live 2s ease-in-out infinite;
+}
+
+/* Glow effect for alerts */
+@keyframes glow-critical {
+  0%, 100% { box-shadow: 0 0 5px hsl(var(--critical)), 0 0 10px hsl(var(--critical)); }
+  50% { box-shadow: 0 0 20px hsl(var(--critical)), 0 0 30px hsl(var(--critical)); }
+}
+
+.animate-glow-critical {
+  animation: glow-critical 1s ease-in-out infinite;
+}
